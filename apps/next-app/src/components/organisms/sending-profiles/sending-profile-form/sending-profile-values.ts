@@ -10,6 +10,7 @@ export function defaultSendingProfileValues(): SendingProfileFormValues {
     fromName: "",
     fromEmail: "",
     replyToEmail: "",
+    envelopeSender: "",
     isDefault: false,
     providerConfig: {},
   };
@@ -21,6 +22,7 @@ export function sendingProfileValuesFromView(profile: {
   fromName: string;
   fromEmail: string;
   replyToEmail: string | null;
+  envelopeSender: string | null;
   isDefault: boolean;
   providerConfig: Record<string, unknown>;
 }): SendingProfileFormValues {
@@ -35,6 +37,7 @@ export function sendingProfileValuesFromView(profile: {
     fromName: profile.fromName,
     fromEmail: profile.fromEmail,
     replyToEmail: profile.replyToEmail ?? "",
+    envelopeSender: profile.envelopeSender ?? "",
     isDefault: profile.isDefault,
     providerConfig,
   };
@@ -60,6 +63,7 @@ export function createSendingProfilePayload(values: SendingProfileFormValues) {
     fromName: values.fromName.trim(),
     fromEmail: values.fromEmail.trim(),
     replyToEmail: values.replyToEmail?.trim() || undefined,
+    envelopeSender: values.envelopeSender?.trim() || undefined,
     isDefault: values.isDefault,
     providerConfig: serializeSendingProfileConfig(values.providerConfig),
   };

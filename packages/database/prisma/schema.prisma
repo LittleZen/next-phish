@@ -424,6 +424,7 @@ model EmailTemplateFile {
 model EmailTemplate {
   id               String              @id @default(cuid())
   name             String
+  subject          String              @default("")
   tags             String[]
   html             String
   design           Json
@@ -621,6 +622,7 @@ model MailSendingProfile {
   fromName               String
   fromEmail              String
   replyToEmail           String?
+  envelopeSender         String?
   headers                Json?              @default("{}")
   providerConfig         Json
   isDefault              Boolean            @default(false)

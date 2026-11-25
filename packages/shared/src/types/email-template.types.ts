@@ -30,6 +30,7 @@ export interface EmailTemplateListItemView {
 }
 
 export interface EmailTemplateView extends EmailTemplateListItemView {
+  subject: string;
   html: string;
   design: unknown;
   trackingPixel: boolean;
@@ -38,6 +39,7 @@ export interface EmailTemplateView extends EmailTemplateListItemView {
 
 export interface CreateEmailTemplateData {
   name: string;
+  subject: string;
   tags: string[];
   html: string;
   design: unknown;
@@ -50,6 +52,7 @@ export interface CreateEmailTemplateData {
 
 export interface UpdateEmailTemplateData {
   name: string;
+  subject: string;
   tags: string[];
   html: string;
   design: unknown;

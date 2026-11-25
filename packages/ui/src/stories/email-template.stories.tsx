@@ -12,6 +12,7 @@ function Preview({ locale = "en" }: { locale?: "en" | "bg" }) {
       <Formik
         initialValues={{
           name: "Quarterly awareness",
+          subject: "Your quarterly security awareness check",
           tags: ["security", "training"],
           status: "DRAFT" as const,
           trackingPixel: true,

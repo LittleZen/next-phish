@@ -31,6 +31,7 @@ const campaignInclude = {
     select: {
       id: true,
       name: true,
+      subject: true,
       tags: true,
       visibility: true,
       status: true,
@@ -53,6 +54,7 @@ const campaignInclude = {
       providerType: true,
       fromName: true,
       fromEmail: true,
+      envelopeSender: true,
       visibility: true,
     },
   },
@@ -904,6 +906,7 @@ export class CampaignRepository {
       const shadowEmail = await tx.emailTemplate.create({
         data: {
           name: email.name,
+          subject: email.subject,
           tags: email.tags,
           html: email.html,
           design: email.design as Prisma.InputJsonValue,
@@ -955,6 +958,7 @@ export class CampaignRepository {
           fromName: profile.fromName,
           fromEmail: profile.fromEmail,
           replyToEmail: profile.replyToEmail,
+          envelopeSender: profile.envelopeSender,
           headers:
             profile.headers === null
               ? undefined

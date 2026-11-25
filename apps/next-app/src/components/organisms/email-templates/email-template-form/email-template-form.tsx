@@ -60,6 +60,7 @@ export function EmailTemplateForm({ templateId }: EmailTemplateFormProps) {
 
   const formInitialValues = {
     name: initialValues.name,
+    subject: initialValues.subject,
     tags: initialValues.tags,
     status: initialValues.status,
     trackingPixel: initialValues.trackingPixel,

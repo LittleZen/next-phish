@@ -4,6 +4,7 @@ export const emailTemplateStatusSchema = z.enum(["DRAFT", "ACTIVE"]);
 
 export const createEmailTemplateSchema = z.object({
   name: z.string().trim().min(1, "Template name is required"),
+  subject: z.string().trim().min(1, "Email subject is required"),
   tags: z.array(z.string().trim().min(1, "Tag cannot be empty")).default([]),
   html: z.string().min(1, "Template HTML is required"),
   design: z.unknown().default({}),

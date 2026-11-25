@@ -23,6 +23,7 @@ export class CreateMailSendingProfileCommand implements ICommandHandler<
       fromName: data.fromName,
       fromEmail: data.fromEmail,
       replyToEmail: data.replyToEmail,
+      envelopeSender: data.envelopeSender,
       headers: data.headers,
       providerConfig: data.providerConfig,
       isDefault: data.isDefault,

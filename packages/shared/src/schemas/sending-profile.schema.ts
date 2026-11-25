@@ -11,6 +11,12 @@ export const sendingProfileFormSchema = z.object({
     .or(z.literal(""))
     .optional()
     .transform((v) => (v === "" ? undefined : v)),
+  envelopeSender: z
+    .string()
+    .email()
+    .or(z.literal(""))
+    .optional()
+    .transform((v) => (v === "" ? undefined : v)),
   isDefault: z.boolean(),
   providerConfig: z.record(z.string()),
 });

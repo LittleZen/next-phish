@@ -157,6 +157,13 @@ export function SendingProfileFormView({
                 placeholder={t("sendingProfiles.replyToEmailPlaceholder")}
                 type="email"
               />
+              <ConfigInput
+                name="envelopeSender"
+                label={t("sendingProfiles.envelopeSender")}
+                placeholder={t("sendingProfiles.envelopeSenderPlaceholder")}
+                hint={t("sendingProfiles.envelopeSenderHint")}
+                type="email"
+              />
               <div className="flex flex-wrap items-center gap-2 min-[651px]:col-span-full [&>label]:font-semibold [&>span]:text-xs [&>span]:text-[var(--np-muted)]">
                 <Checkbox
                   id="sending-isDefault"

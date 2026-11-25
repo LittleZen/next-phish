@@ -7,13 +7,13 @@ An **email template** is the practice message people receive. It defines the sub
 
 [![New email template fields with tracking pixel option and placeholder variables](/screenshots/email-template-editor.jpg)](/screenshots/email-template-editor.jpg)
 
-_The form sets the template name, status, and tracking option. The variable panel provides placeholders for recipient details and the campaign link; the visual editor is immediately below the form._
+_The form sets the template name, subject, status, and tracking option. The variable panel provides placeholders for recipient details and the campaign link; the visual editor is immediately below the form._
 
 ## Prepare the message
 
 1. Open **Email templates → New template**. Give it an internal name that describes the exercise, not just `Test`.
 2. Set its status to **Draft** while working. Add tags if your team uses them to organize templates.
-3. Build the subject and body in the visual editor. The variable panel shows placeholders that NextPhish can replace with recipient or campaign information. Preview a sample so you can spot missing text or layout problems.
+3. Set the **Subject** in the form field above the editor, then build the body in the visual editor. Both the subject and body accept the placeholders shown in the variable panel (for example `{{.FirstName}}`), which NextPhish replaces with recipient or campaign information at send time. Preview a sample so you can spot missing text or layout problems.
 4. Add attachments only if the exercise requires them. Wait until an upload or removal finishes before saving; these operations depend on the configured R2 storage.
 5. Save and preview the message, then send a test through the chosen sending profile to a mailbox your team controls. Check it on both desktop and mobile mail clients if those are in your audience.
 6. Mark the template **Active** when it is ready to choose in a campaign.

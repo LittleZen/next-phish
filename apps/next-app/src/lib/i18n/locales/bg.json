@@ -416,6 +416,9 @@
     "createSubtitle": "Създайте имейл шаблон с GrapesJS и го запазете за организацията си.",
     "editSubtitle": "Обновете структурата, съдържанието и променливите на този имейл шаблон.",
     "name": "Име на шаблон",
+    "subject": "Тема",
+    "subjectPlaceholder": "Въведете темата на имейла",
+    "subjectHint": "Показва се като тема на имейла. Поддържа променливи като {{.FirstName}}.",
     "tags": "Тагове",
     "tagsPlaceholder": "Добавете таг и натиснете Enter",
     "status": "Статус",
@@ -458,6 +461,7 @@
     "validationSummary": "Проверете данните за шаблона",
     "validation": {
       "nameRequired": "Името на шаблона е задължително.",
+      "subjectRequired": "Темата на имейла е задължителна.",
       "tagRequired": "Таговете не могат да бъдат празни.",
       "invalid": "Въведете валидна стойност."
     },
@@ -671,6 +675,9 @@
     "fromEmailPlaceholder": "no-reply@company.com",
     "replyToEmail": "Имейл за отговор",
     "replyToEmailPlaceholder": "support@company.com",
+    "envelopeSender": "Подател на плика",
+    "envelopeSenderPlaceholder": "bounce@company.com",
+    "envelopeSenderHint": "Незадължителен подател на SMTP плика (Return-Path) за маршрутизиране и върнати съобщения. Оставете празно, за да се използва From имейлът. Получателите виждат From адреса по-горе.",
     "isDefault": "Профил по подразбиране",
     "isDefaultHint": "Използвай този профил по подразбиране за нови кампании.",
     "providerConfig": "Конфигурация на доставчик",

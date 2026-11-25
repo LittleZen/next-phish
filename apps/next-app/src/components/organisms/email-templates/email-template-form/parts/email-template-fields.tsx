@@ -22,6 +22,9 @@ export function EmailTemplateErrorSummary({ t }: { t: TranslationFunction }) {
           typeof errors.name === "string"
             ? { id: "email-template-name", message: errors.name }
             : null,
+          typeof errors.subject === "string"
+            ? { id: "email-template-subject", message: errors.subject }
+            : null,
           typeof errors.tags === "string"
             ? { id: "email-template-tags", message: errors.tags }
             : null,
@@ -46,7 +49,7 @@ export function EmailTemplateFields({ t }: { t: TranslationFunction }) {
   return (
     <Card>
       <CardBody>
-        <div className="grid grid-cols-[minmax(0,1fr)] gap-[18px] min-[621px]:grid-cols-[minmax(0,2fr)_minmax(180px,1fr)] min-[621px]:[&>:first-child]:col-span-2 min-[621px]:[&>:nth-child(2)]:col-span-2">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-[18px] min-[621px]:grid-cols-[minmax(0,2fr)_minmax(180px,1fr)] min-[621px]:[&>:first-child]:col-span-2 min-[621px]:[&>:nth-child(2)]:col-span-2 min-[621px]:[&>:nth-child(3)]:col-span-2">
           <FormField
             id="email-template-name"
             label={t("emailTemplates.name")}
@@ -59,6 +62,24 @@ export function EmailTemplateFields({ t }: { t: TranslationFunction }) {
                 name="name"
                 value={values.name}
                 placeholder={t("emailTemplates.namePlaceholder")}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            )}
+          </FormField>
+          <FormField
+            id="email-template-subject"
+            label={t("emailTemplates.subject")}
+            required
+            hint={t("emailTemplates.subjectHint")}
+            error={touched.subject ? errors.subject : undefined}
+          >
+            {(control) => (
+              <Input
+                {...control}
+                name="subject"
+                value={values.subject}
+                placeholder={t("emailTemplates.subjectPlaceholder")}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />

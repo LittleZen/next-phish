@@ -28,6 +28,12 @@ export interface SendMailInput {
   fromName: string;
   fromEmail: string;
   replyToEmail?: string;
+  /**
+   * Optional SMTP envelope sender (MAIL FROM / Return-Path). When set it
+   * overrides the envelope-from used for routing and bounces, while the
+   * visible From header stays `fromName <fromEmail>`.
+   */
+  envelopeSender?: string;
   to: string[];
   cc?: string[];
   bcc?: string[];

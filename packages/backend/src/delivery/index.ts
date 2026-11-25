@@ -21,6 +21,7 @@ export {
 export {
   DeliveryProcessorService,
   renderDeliveryHtml,
+  renderDeliverySubject,
 } from "./services/delivery-processor.service";
 export { DistributedRateLimiterService } from "./services/distributed-rate-limiter.service";
 export { ProviderWebhookService } from "./services/provider-webhook.service";

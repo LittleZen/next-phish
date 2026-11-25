@@ -9,6 +9,7 @@ export interface MailSendingProfileRow {
   fromName: string;
   fromEmail: string;
   replyToEmail: string | null;
+  envelopeSender: string | null;
   headers: Record<string, unknown> | null;
   providerConfig: Record<string, unknown>;
   isDefault: boolean;
@@ -23,6 +24,7 @@ export interface CreateMailSendingProfileData {
   fromName: string;
   fromEmail: string;
   replyToEmail?: string;
+  envelopeSender?: string;
   headers?: Record<string, unknown>;
   providerConfig: Record<string, unknown>;
   isDefault?: boolean;
@@ -33,6 +35,7 @@ export interface UpdateMailSendingProfileData {
   fromName?: string;
   fromEmail?: string;
   replyToEmail?: string | null;
+  envelopeSender?: string | null;
   headers?: Record<string, unknown> | null;
   providerConfig?: Record<string, unknown>;
   isDefault?: boolean;
@@ -57,6 +60,7 @@ const listSelect = {
   fromName: true,
   fromEmail: true,
   replyToEmail: true,
+  envelopeSender: true,
   headers: true,
   isDefault: true,
   createdAt: true,

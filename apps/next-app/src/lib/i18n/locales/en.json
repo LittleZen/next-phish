@@ -416,6 +416,9 @@
     "createSubtitle": "Build an email template with GrapesJS and save it for your organization.",
     "editSubtitle": "Update the structure, content, and variables of this email template.",
     "name": "Template name",
+    "subject": "Subject",
+    "subjectPlaceholder": "Enter the email subject",
+    "subjectHint": "Shown as the email subject line. Supports variables such as {{.FirstName}}.",
     "tags": "Tags",
     "tagsPlaceholder": "Add a tag and press Enter",
     "status": "Status",
@@ -458,6 +461,7 @@
     "validationSummary": "Check the template details",
     "validation": {
       "nameRequired": "Template name is required.",
+      "subjectRequired": "Email subject is required.",
       "tagRequired": "Tags cannot be empty.",
       "invalid": "Enter a valid value."
     },
@@ -748,6 +752,9 @@
     "fromEmailPlaceholder": "no-reply@company.com",
     "replyToEmail": "Reply-to email",
     "replyToEmailPlaceholder": "support@company.com",
+    "envelopeSender": "Envelope sender",
+    "envelopeSenderPlaceholder": "bounce@company.com",
+    "envelopeSenderHint": "Optional SMTP envelope sender (Return-Path) used for routing and bounces. Leave empty to use the From email. Recipients still see the From above.",
     "isDefault": "Default profile",
     "isDefaultHint": "Use this profile as the default for new campaigns.",
     "providerConfig": "Provider config",

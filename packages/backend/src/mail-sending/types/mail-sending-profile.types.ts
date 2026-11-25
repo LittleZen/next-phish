@@ -6,6 +6,7 @@ export interface MailSendingProfileView {
   fromName: string;
   fromEmail: string;
   replyToEmail: string | null;
+  envelopeSender: string | null;
   headers: Record<string, unknown> | null;
   isDefault: boolean;
   createdAt: Date;

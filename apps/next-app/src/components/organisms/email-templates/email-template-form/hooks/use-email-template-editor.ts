@@ -95,6 +95,7 @@ export function useEmailTemplateEditor({
 
   async function handleSubmit(values: {
     name: string;
+    subject: string;
     tags: string[];
     status: "DRAFT" | "ACTIVE";
     trackingPixel: boolean;
@@ -144,6 +145,7 @@ export function useEmailTemplateEditor({
   const initialValues = data
     ? {
         name: data.name,
+        subject: data.subject,
         tags: data.tags,
         status: data.status,
         trackingPixel: data.trackingPixel,
@@ -151,6 +153,7 @@ export function useEmailTemplateEditor({
       }
     : {
         name: "",
+        subject: "",
         tags: [] as string[],
         status: "DRAFT" as const,
         trackingPixel: true,

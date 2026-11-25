@@ -31,6 +31,7 @@ const rows = providers.map((providerType, index) => ({
   fromName: "Security team",
   fromEmail: "security@example.com",
   replyToEmail: null as string | null,
+  envelopeSender: null as string | null,
   headers: null,
   isDefault: index === 0,
   createdAt: new Date("2026-09-01"),

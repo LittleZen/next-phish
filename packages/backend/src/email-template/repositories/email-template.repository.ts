@@ -11,6 +11,7 @@ interface EmailTemplateFileRef {
 }
 
 interface EmailTemplatePrismaRow extends EmailTemplateListItemView {
+  subject: string;
   html: string;
   design: unknown;
   trackingPixel: boolean;
@@ -60,6 +61,7 @@ const listSelect = {
 
 const detailSelect = {
   ...listSelect,
+  subject: true,
   html: true,
   design: true,
   trackingPixel: true,

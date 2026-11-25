@@ -1,5 +1,6 @@
 export interface EmailTemplatePayloadValues {
   name: string;
+  subject: string;
   tags: string[];
   status: "DRAFT" | "ACTIVE";
   trackingPixel: boolean;
@@ -13,6 +14,7 @@ export function buildEmailTemplatePayload(
 ) {
   return {
     name: values.name.trim(),
+    subject: values.subject.trim(),
     tags: values.tags.flatMap((tag) => {
       const normalized = tag.trim();
       return normalized ? [normalized] : [];

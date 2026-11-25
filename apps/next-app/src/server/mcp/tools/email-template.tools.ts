@@ -71,6 +71,7 @@ export function registerEmailTemplateTools(
       const result = await caller.emailTemplate.update({
         ...input,
         name: input.name ?? "",
+        subject: input.subject ?? "",
         html: input.html ?? "",
         design: {},
       });

@@ -18,22 +18,22 @@ function render(html: string, values: Record<string, string>): string {
   );
 }
 
-export function renderDeliveryHtml(input: {
-  templateHtml: string;
+interface DeliveryRecipientVariables {
+  firstName: string;
+  lastName: string;
+  email: string;
+  position: string | null;
+  trackingRef: string;
+}
+
+function buildRecipientVariables(input: {
   publicContentUrl: string;
   pagePath: string | null;
-  trackingPixel: boolean;
-  recipient: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    position: string | null;
-    trackingRef: string;
-  };
-}): string {
+  recipient: DeliveryRecipientVariables;
+}): Record<string, string> {
   const landingPath = input.pagePath ?? "c";
   const landingUrl = `${input.publicContentUrl}/${landingPath}?ref=${encodeURIComponent(input.recipient.trackingRef)}`;
-  let html = render(input.templateHtml, {
+  return {
     firstName: input.recipient.firstName,
     FirstName: input.recipient.firstName,
     lastName: input.recipient.lastName,
@@ -46,7 +46,26 @@ export function renderDeliveryHtml(input: {
     TrackingRef: input.recipient.trackingRef,
     url: landingUrl,
     URL: landingUrl,
-  });
+  };
+}
+
+export function renderDeliverySubject(input: {
+  templateSubject: string;
+  publicContentUrl: string;
+  pagePath: string | null;
+  recipient: DeliveryRecipientVariables;
+}): string {
+  return render(input.templateSubject, buildRecipientVariables(input));
+}
+
+export function renderDeliveryHtml(input: {
+  templateHtml: string;
+  publicContentUrl: string;
+  pagePath: string | null;
+  trackingPixel: boolean;
+  recipient: DeliveryRecipientVariables;
+}): string {
+  let html = render(input.templateHtml, buildRecipientVariables(input));
   if (input.trackingPixel)
     html += `<img src="${input.publicContentUrl}/p.gif?ref=${encodeURIComponent(input.recipient.trackingRef)}" alt="" width="1" height="1" style="display:none" />`;
   return html;
@@ -172,6 +191,15 @@ export class DeliveryProcessorService {
       trackingPixel: recipient.campaign.emailTemplate.trackingPixel,
       recipient,
     });
+    const renderedSubject = renderDeliverySubject({
+      templateSubject: recipient.campaign.emailTemplate.subject,
+      publicContentUrl: publicHost,
+      pagePath: recipient.campaign.page?.path ?? null,
+      recipient,
+    });
+    const subject = renderedSubject.trim()
+      ? renderedSubject
+      : recipient.campaign.emailTemplate.name;
 
     let result;
     try {
@@ -183,8 +211,10 @@ export class DeliveryProcessorService {
           fromEmail: recipient.campaign.mailSendingProfile.fromEmail,
           replyToEmail:
             recipient.campaign.mailSendingProfile.replyToEmail ?? undefined,
+          envelopeSender:
+            recipient.campaign.mailSendingProfile.envelopeSender ?? undefined,
           to: [recipient.email],
-          subject: "Information",
+          subject,
           html,
           headers: (recipient.campaign.mailSendingProfile.headers ??
             {}) as Record<string, string>,

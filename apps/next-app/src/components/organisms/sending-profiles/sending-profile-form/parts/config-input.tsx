@@ -12,6 +12,7 @@ interface Props {
   type?: string;
   autoComplete?: string;
   required?: boolean;
+  hint?: string;
 }
 export function ConfigInput({
   name,
@@ -21,6 +22,7 @@ export function ConfigInput({
   type,
   autoComplete,
   required,
+  hint,
 }: Props) {
   const t = useTranslation();
   const { values, errors, touched, setFieldValue, setFieldTouched } =
@@ -32,6 +34,7 @@ export function ConfigInput({
     <FormField
       id={id}
       label={label}
+      hint={hint}
       error={typeof error === "string" ? error : undefined}
       required={required}
     >

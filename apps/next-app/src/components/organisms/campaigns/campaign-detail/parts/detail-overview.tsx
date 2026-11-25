@@ -221,7 +221,13 @@ function CampaignAssets({
           icon={Mail}
           label={t("campaignsUi.emailTemplate")}
           name={data.emailTemplate?.name ?? t("campaignsUi.notSelected")}
-          detail={data.emailTemplate?.tags.join(", ") || undefined}
+          detail={
+            data.emailTemplate
+              ? data.emailTemplate.subject ||
+                data.emailTemplate.tags.join(", ") ||
+                undefined
+              : undefined
+          }
           status={data.emailTemplate?.status}
           onOpen={
             data.emailTemplate

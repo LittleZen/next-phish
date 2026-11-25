@@ -7,6 +7,7 @@ describe("email template mutation payload", () => {
       buildEmailTemplatePayload(
         {
           name: "  Security notice ",
+          subject: "  Action required  ",
           tags: [" urgent ", "", "training"],
           status: "ACTIVE",
           trackingPixel: false,
@@ -17,6 +18,7 @@ describe("email template mutation payload", () => {
       ),
     ).toEqual({
       name: "Security notice",
+      subject: "Action required",
       tags: ["urgent", "training"],
       html: "<main>Hello</main>",
       design: { pages: [{ id: "page" }] },

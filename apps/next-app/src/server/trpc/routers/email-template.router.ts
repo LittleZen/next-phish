@@ -68,6 +68,7 @@ export const emailTemplateRouter = router({
         organizationId: ctx.activeOrganizationId,
         data: {
           name: input.name,
+          subject: input.subject,
           tags: input.tags,
           html: input.html,
           design: input.design,

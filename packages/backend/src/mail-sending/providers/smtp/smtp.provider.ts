@@ -69,6 +69,20 @@ export class SMTPProvider extends BaseMailProvider<SMTPProviderConfig> {
         to: message.to.join(", "),
         cc: message.cc?.join(", "),
         bcc: message.bcc?.join(", "),
+        // When an envelope sender is set, override the SMTP MAIL FROM
+        // (Return-Path) while keeping the visible From/To headers intact.
+        ...(message.envelopeSender
+          ? {
+              envelope: {
+                from: message.envelopeSender,
+                to: [
+                  ...message.to,
+                  ...(message.cc ?? []),
+                  ...(message.bcc ?? []),
+                ],
+              },
+            }
+          : {}),
         subject: message.subject,
         messageId: message.messageId,
         html: message.html,

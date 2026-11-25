@@ -46,6 +46,7 @@ describe("sending profile payloads", () => {
       sendingProfileValuesFromView({
         ...values,
         replyToEmail: null,
+        envelopeSender: null,
         providerConfig: { apiKey: "[REDACTED]", port: 587, secure: false },
       }).providerConfig,
     ).toEqual({ apiKey: "[REDACTED]", port: "587", secure: "false" });

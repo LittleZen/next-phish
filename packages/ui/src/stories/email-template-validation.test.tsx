@@ -8,17 +8,20 @@ describe("email template form validation", () => {
     expect(
       validate({
         name: "   ",
+        subject: "   ",
         tags: [""],
         status: "DRAFT",
         trackingPixel: true,
       }),
     ).toMatchObject({
       name: "translated:emailTemplates.validation.nameRequired",
+      subject: "translated:emailTemplates.validation.subjectRequired",
       tags: "translated:emailTemplates.validation.tagRequired",
     });
     expect(
       validate({
         name: "Awareness",
+        subject: "Security awareness check",
         tags: ["training"],
         status: "ACTIVE",
         trackingPixel: false,

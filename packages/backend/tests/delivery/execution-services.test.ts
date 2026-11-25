@@ -13,6 +13,7 @@ import {
   normalizeNetwork,
   resolveClientIp,
   renderDeliveryHtml,
+  renderDeliverySubject,
   rewriteTrackedLinks,
   createWebhookSignature,
   verifyWebhookSignature,
@@ -280,6 +281,22 @@ describe("tracked content", () => {
       '<img src="http://localhost:3001/p.gif?ref=AbCdEf123456"',
     );
     expect(html).toContain('width="1" height="1" style="display:none"');
+  });
+
+  it("renders recipient variables into the email subject", () => {
+    const subject = renderDeliverySubject({
+      templateSubject: "Action required, {{.FirstName}}",
+      publicContentUrl: "http://localhost:3001",
+      pagePath: "account/login",
+      recipient: {
+        firstName: "Dana",
+        lastName: "User",
+        email: "dana@example.test",
+        position: null,
+        trackingRef: "AbCdEf123456",
+      },
+    });
+    expect(subject).toBe("Action required, Dana");
   });
 
   it("maps destinations to immutable short server-side identifiers", () => {

@@ -4,12 +4,14 @@ import type { TranslationFunction } from "@/src/lib/i18n/shared";
 
 const schema = createEmailTemplateSchema.pick({
   name: true,
+  subject: true,
   tags: true,
   status: true,
   trackingPixel: true,
 });
 const messages: Record<string, string> = {
   "Template name is required": "nameRequired",
+  "Email subject is required": "subjectRequired",
   "Tag cannot be empty": "tagRequired",
 };
 

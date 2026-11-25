@@ -34,6 +34,7 @@ const campaign = {
   emailTemplate: {
     id: "email-1",
     name: "Password expiry notice",
+    subject: "Action required: your password expires soon",
     status: "ACTIVE",
     tags: ["security", "credentials"],
   },
